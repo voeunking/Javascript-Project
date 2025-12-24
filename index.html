@@ -6,15 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
     <!-- form login -->
-    <form action="#" class="login-form">
+    <form action="#" class="login-form" style="display: none;" id="login">
         <div class="form">
             <div class="form-top">
                 <img src="img/logo.png" alt="">
-                <h3>Task Management</h3>
+                <h1>Task Management</h1>
             </div>
             <div class="input">
                 <input type="email" name="email" id="email" placeholder="Email">
@@ -31,15 +32,12 @@
         </div>
         
     </form>
-</body>
 
-</html>
-    <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
 
-<body>
-    <div class="register-container">
+
+
+
+    <div class="register-container" style="display: block;">
         <div class="img-logo">
             <img src="img/LOGO.png" alt="Logo" class="logo">
         </div>
@@ -54,7 +52,7 @@
                 <button type="submit">Register Now</button>
             </div>
             <p class="link">Alredy have account ?
-                <span><a href="login">Login</a></span>
+                <span><a href="#login" id="notLogin">Login</a></span>
             </p>
         </form>
     </div>
