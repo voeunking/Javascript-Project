@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="main">
+    <div class="main" style="display: none;" id="main">
         <div class="nav-bar">
             <div class="nav-left">
                 <a href="#" class="icon-title"><i class='bx bx-menu' ></i></a>
@@ -21,7 +21,7 @@
             </div>
             <div class="nav-center">
                 <i class='bx bx-search'></i>
-                <input class="btn" type="text" placeholder="sharech">
+                <input class="bt" type="text" placeholder="sharech">
 
             </div>
             <div class="nav-right">
@@ -31,9 +31,7 @@
                     <img src="./img/KING VOEUN.JPG" alt="picture">
                     <div class="name">KING VOEUN</div>
                 </div>
-
             </div>
-
         </div>
         <div class="sub-main">
             <div class="side-bar">
@@ -90,14 +88,6 @@
             </div>
         </div>
     </div>
-</body>
-
-</html>
-    <title>Login</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-
-<body>
     <!-- form login -->
     <form action="#" class="login-form" style="display: none;" id="login">
         <div class="form">
@@ -113,7 +103,7 @@
                     <label for="text">Show password</label>
                 </div>
             </div>
-            <button>Login</button>
+            <button id="login-button">Login</button>
             <hr>
             <p id="forgot-password">Forgot Password?</p>
             <p id="re-form">Don't have an account? <a href="#regist">Register</a></p>
@@ -128,12 +118,12 @@
         <h1>Task Management</h1>
         <form>
             <div class="input">
-                <input type="text" placeholder="Full Name">
-                <input type="email" placeholder="Enter your email">
-                <input type="password" placeholder="Password">
-                <input type="password" placeholder="Re-enter your password">
-                <input type="numberphone" placeholder="Phone Number">
-                <button type="submit">Register Now</button>
+                <input type="text" name="inputText" placeholder="Full Name">
+                <input type="email" name="inputText" placeholder="Enter your email">
+                <input type="password" name="inputText" placeholder="Password">
+                <input type="password" name="inputText" placeholder="Confirm password">
+                <input type="numberphone" name="inputText" placeholder="Phone Number">
+                <button type="submit"  id="register-login">Register Now</button>
             </div>
             <p class="link">Alredy have account ?
                 <span><a href="#login">Login</a></span>
@@ -141,7 +131,6 @@
         </form>
     </div>
 </body>
-
 <script src="./js/app.js"></script>
 
 </html>
