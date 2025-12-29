@@ -3,9 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Categories Manager</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-    
+<body class="body">
+    <div class="container">
+        <!-- Header -->
+        <div class="card header-card">
+            <div class="card-header">
+                <div class="nav-container">
+                    <div class="nav-tabs">
+                        <!-- <button class="nav-tab">Overview</button> -->
+                        <button class="nav-tab active">Categories</button>
+                        <!-- <button class="nav-tab">Settings</button> -->
+                    </div>
+                    <button class="btn btn-primary add-btn">
+                        + Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Category Section -->
+        <div class="card">
+            <div class="card-content">
+                <h2 class="section-title">Add Category</h2>
+                <div class="input-group">
+                    <input 
+                        type="text" 
+                        id="categoryInput"
+                        placeholder="Enter category name" 
+                        class="input-field"
+                    >
+                    <button 
+                        onclick="addCategory()"
+                        class="btn btn-primary"
+                    >
+                        Add
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories List -->
+        <div class="card">
+            <div class="card-content">
+                <h2 class="section-title">Categories</h2>
+                <div id="categoriesList" class="categories-list">
+                    <div class="category-item" data-category="Work">
+                        <div class="category-info">
+                            <div class="category-dot blue"></div>
+                            <span class="category-name">Work</span>
+                        </div>
+                        <div class="category-actions">
+                            <button onclick="editCategory('Work')" class="btn-edit">Edit</button>
+                            <button onclick="deleteCategory('Work')" class="btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    
+                    <div class="category-item" data-category="Personal">
+                        <div class="category-info">
+                            <div class="category-dot green"></div>
+                            <span class="category-name">Personal</span>
+                        </div>
+                        <div class="category-actions">
+                            <button onclick="editCategory('Personal')" class="btn-edit">Edit</button>
+                            <button onclick="deleteCategory('Personal')" class="btn-delete">Delete</button>
+                        </div>
+                    </div>
+                    
+                    <div class="category-item" data-category="Study">
+                        <div class="category-info">
+                            <div class="category-dot purple"></div>
+                            <span class="category-name">Study</span>
+                        </div>
+                        <div class="category-actions">
+                            <button onclick="editCategory('Study')" class="btn-edit">Edit</button>
+                            <button onclick="deleteCategory('Study')" class="btn-delete">Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
 </body>
 </html>
