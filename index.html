@@ -24,13 +24,31 @@
                     <label for="text">Show password</label>
                 </div>
             </div>
-            <button>Login</button>
+            <button type="submit">Login</button>
             <hr>
             <p id="forgot-password">Forgot Password?</p>
             <p>Don't have an account? <a href="#">Register</a></p>
         </div>
-        
+
     </form>
+    <script src="js/app.js"></script>
+
+    <!-- <script>
+        document.querySelector(".login-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let email = document.getElementById("email").value;
+            let password = document.getElementById("password").value;
+
+            let users = JSON.parse(localStorage.getItem("users")) || [];
+
+            users.push({ email, password });
+
+            localStorage.setItem("users", JSON.stringify(users));
+
+            alert("Saved!");
+        });
+    </script> -->
 </body>
 
 </html>
