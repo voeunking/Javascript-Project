@@ -178,6 +178,15 @@ logo.addEventListener('click', function () {
     let input = document.getElementsByName('inputText');
     console.log(input.value)
 })
-// for (let Input of input){
-//     console.log(Input.value)
-// }
+// Tage
+let tage =document.getElementById('tage');
+tage.addEventListener('click', function(){
+    let main_1_top = document.querySelector('.main-1-top')
+    let show_tage = document.querySelector('.tage');
+    show_tage.style.display = 'block';
+    main_1_top.style.display = 'none';
+
+
+
+
+})
