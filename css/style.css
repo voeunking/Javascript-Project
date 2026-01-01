@@ -344,10 +344,8 @@ body {
 }
 
 
-<<<<<<< HEAD
 #taskList {
   list-style: none;
-=======
 input[type="text"],
 input[type="email"],
 input[type="password"],
@@ -360,7 +358,6 @@ input[type="numberphone"] {
     border-bottom: 2px solid rgb(162, 167, 182);
     color: rgb(23, 21, 21);
 
->>>>>>> feature/develop
 }
 
 #taskList li {
@@ -399,7 +396,6 @@ input[type="numberphone"] {
   background-color: #1e7e34;
 }
 
-<<<<<<< HEAD
 #taskList li .delete {
   background-color: #dc3545;
 }
@@ -421,7 +417,6 @@ input[type="numberphone"] {
   display: flex;
   gap: 5px;
 }
-=======
 }
 
 
@@ -491,4 +486,3 @@ input[type="numberphone"] {
     border-radius: 5px;
     background-color: rgb(213, 15, 15);
 }
->>>>>>> feature/develop

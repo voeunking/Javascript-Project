@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 //task-filter- tasks.js
 
 let tasks = [
@@ -120,11 +119,9 @@ function showDetails(task) {
 
 renderTasks();
 
-let notLogin = document.getElementById('notLoing');
-console.log(notLogin)
-=======
+// let notLogin = document.getElementById('notLoing');
+// console.log(notLogin)
 let notLogin = document.querySelector('.link span a');
->>>>>>> feature/develop
 let register = document.querySelector('.register-container')
 let login = document.getElementById('login');
 let re_form = document.getElementById('re-form');
@@ -285,9 +282,7 @@ function getUserData() {
     return userData ? JSON.parse(userData) : null;
 }
 
-<<<<<<< HEAD
 register.addEventListener('click',display)
-=======
 // Function to get current user session
 function getCurrentUser() {
     const currentUser = localStorage.getItem('currentUser');
@@ -321,4 +316,3 @@ tage.addEventListener('click', function(){
 
 
 })
->>>>>>> feature/develop
