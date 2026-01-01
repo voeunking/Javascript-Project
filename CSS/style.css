@@ -1,95 +1,125 @@
+/* Task Filter */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, Helvetica, sans-serif;
-    /* display: flex;
-    justify-content: center; */
-    background-image: url(../img/bg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    backdrop-filter: blur(7px);
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f0f2f5;
+  padding: 20px;
 }
 
-/* Form */
-.login-form {
-   height: 90vh;
-    /* border: 1px solid black; */
-     width: 100%;
-    margin-top: 60px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    align-content: center;
-    align-items: center; 
-}
-.form{
-     box-shadow: 1px 1px 20px rgba(200, 200, 200, 0.648);
-    background-color: #ffffffad;
-    border-radius: 5px;
-    height: 70vh;
-    padding:50px;
-    
-    
-
-}
-.show-pas{
-    align-self: self-start;
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-.form-top img {
-    width: 100px;
-    height: 100px;
-    margin-top: 10px;
+.container {
+  max-width: 700px;
+  margin: auto;
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.form-top h3 {
-    font-size: 28px;
-    text-shadow: 2px 2px 5px rgba(7, 3, 111, 0.87);
+.container h2 {
+  margin-bottom: 20px;
+  color: #333;
 }
 
-.input {
-    width: 400px;
-    display: flex;
-    flex-direction: column;
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
-.input input {
-    padding: 9px;
-    margin: 10px 0px;
-    font-size: 14px;
-    background: none;
-    border:none;
-    border-bottom: 2px solid rgba(11, 4, 128, 0.615);
+.filters input[type="text"],
+.filters select {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  flex: 1;
 }
 
-.login-form button {
-    background-color: blue;
-    color: white;
-    border: none;
-    font-size: 14px;
-    margin-top: 10px;
-    width: 400px;
-    padding: 10px;
-
+.btn-add {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
 }
 
-.login-form hr {
-    margin-top: 20px;
-    width: 100px;
+.btn-add .add {
+  padding: 10px 20px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
 }
 
-#forgot-password {
-    font-weight: bold;
+.btn-add .add:hover {
+  background-color: #0056b3;
 }
 
-.login-form p {
-    font-size: 12px;
-    margin: 10px;
+
+#taskList {
+  list-style: none;
 }
 
-.login-form p a {
-    color: #1e17eb;
-    font-weight: bold;
-    text-decoration: none;
+#taskList li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border-left: 4px solid #007bff;
+}
+
+#taskList li h4 {
+  font-size: 16px;
+  color: #333;
+}
+
+#taskList li .edit,
+#taskList li .delete,
+#taskList li .soacetis {
+  margin-left: 8px;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  transition: background 0.3s;
+}
+
+#taskList li .edit {
+  background-color: #28a745;
+}
+
+#taskList li .edit:hover {
+  background-color: #1e7e34;
+}
+
+#taskList li .delete {
+  background-color: #dc3545;
+}
+
+#taskList li .delete:hover {
+  background-color: #a71d2a;
+}
+
+#taskList li .soacetis {
+  background-color: #ffc107;
+  color: #333;
+}
+
+#taskList li .soacetis:hover {
+  background-color: #e0a800;
+}
+
+#taskList li .button-group {
+  display: flex;
+  gap: 5px;
 }
