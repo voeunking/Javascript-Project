@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" href="CSS/style.css">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Management</title>
+    <link rel="icon" type="image/png" href="img/image.png">
+    <link rel="stylesheet" href="./css/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <!-- form login -->
+    <form action="#" class="login-form" style="display: none;" id="login">
+        <div class="form">
+            <div class="form-top">
+                <img src="img/logo.png" alt="">
+                <h1>Task Management</h1>
+            </div>
+            <div class="input">
+                <input type="email" name="email" id="email" placeholder="Email">
+                <input type="password" name="password" id="password" placeholder="Password">
+                <div class="show-pas">
+                    <input type="checkbox" name="show" id="show">
+                    <label for="text">Show password</label>
+                </div>
+            </div>
+            <button id="login-button">Login</button>
+            <hr>
+            <p id="forgot-password">Forgot Password?</p>
+            <p id="re-form">Don't have an account? <a href="#regist">Register</a></p>
+        </div>
+
+    </form>
+    <!-- register -->
+    <div class="register-container" style="display: block;" id="regist">
+        <div class="img-logo">
+            <img src="img/image.png" alt="Logo" class="logo">
+        </div>
+        <h1>Task Management</h1>
+        <form>
+            <div class="input">
+                <input type="text" name="inputText" placeholder="Full Name">
+                <input type="email" name="inputText" placeholder="Enter your email">
+                <input type="password" name="inputText" placeholder="Password">
+                <input type="password" name="inputText" placeholder="Confirm password">
+                <input type="numberphone" name="inputText" placeholder="Phone Number">
+                <button type="submit" id="register-login">Register Now</button>
+            </div>
+            <p class="link">Alredy have account ?
+                <span><a href="#login">Login</a></span>
+            </p>
+        </form>
+    </div>
+    <div class="main" style="display: none;" id="main">
+        <div class="nav-bar">
+            <div class="nav-left">
+                <a href="#" class="icon-title"><i class='bx bx-menu'></i></a>
+                <a href="#" class="title">Task Management</a>
+
+            </div>
+            <div class="nav-center">
+                <i class='bx bx-search'></i>
+                <input class="bt" type="text" placeholder="sharech">
+
+            </div>
+            <div class="nav-right">
+                <a href="#"><i class='bx bx-help-circle'></i></a>
+                <a href="#"><i class='bx bxs-bell'></i></a>
+                <div class="info">
+                    <img src="./img/KING VOEUN.JPG" alt="picture">
+                    <div class="name" id="name">KING VOEUN</div>
+                </div>
+            </div>
+        </div>
+        <div class="sub-main">
+            <div class="side-bar">
+                <div class="side" id="active">
+                    <a href="#"><i class='bx bxs-dashboard'></i></a>
+                    <a href="#">Dashbord</a>
+                </div>
+                <div class="side">
+                    <a href="#"><i class='bx bx-task'></i></a>
+                    <a href="#">Task</a>
+                </div>
+                <div class="side">
+                    <a href="#"><i class='bx bxs-category'></i></a>
+                    <a href="#">Gatagarie</a>
+                </div>
+                <div class="side">
+                    <a href="#"><i class='bx bxs-purchase-tag'></i></a>
+                    <a href="#">Tage</a>
+                </div>
+                <div class="side">
+                    <a href="#"><i class='bx bxs-user'></i></a>
+                    <a href="#">Profile</a>
+                </div>
+                <div class="side">
+                    <a href="#"><i class='bx bx-cog'></i></a>
+                    <a href="#">Setting</a>
+                </div>
+                <div class="side" id="logout">
+                    <a href="#"><i class='bx bx-log-out'></i></a>
+                    <a href="#">Log out</a>
+                </div>
+            </div>
+
+            <div class="main-1">
+                <div class="main-1-top">
+                    <div class="element1">
+                        <div class="total">Total Task</div>
+                        <div class="num">0</div>
+                    </div>
+                    <div class="element2">
+                        <div class="completed">Completed</div>
+                        <div class="num">0</div>
+                    </div>
+                    <div class="element3">
+                        <div class="pending">Pending</div>
+                        <div class="num">0</div>
+                    </div>
+                    <div class="element4">
+                        <div class="today">Today's Task</div>
+                        <div class="num">0</div>
+                    </div>
+                </div>
+                <div class="tage" style="display: none;">
+                    <div class="top">
+                        <div class="Tags">Tage</div>
+                        <div class="top-right">
+                            <i class='bx bxs-purchase-tag'></i>
+                            <div class="add">Add</div>
+                        </div>
+                    </div>
+                    <div class="shearch">
+                        <div class="text">Tag Name: </div>
+                        <input type="text">
+                    </div>
+                    <div class="elemen">
+                        <div class="left">
+                            <div class="icon">
+                                <div class="icon1">icon</div>
+                                <div class="icon1">icon</div>
+                            </div>
+                            <div class="info">
+                                <div class="text1">Urgent</div>
+                                <div class="text2">
+                                    <div class="item">1</div>
+                                    <div class="item">2</div>
+                                    <div class="item">3</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="right">
+                            <button>Urge</button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./js/app.js"></script>
+
+</html>
