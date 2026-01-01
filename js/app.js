@@ -78,7 +78,9 @@ register_button.addEventListener('click', function (e) {
     console.log('User data stored:', userData);
     // Show dashboard
     let main = document.getElementById('main');
-    main.style.display = 'block';
+    let name = document.getElementById('name');
+    name.textContent = userData.fullName;
+    login.style.display = 'block';
     register.style.display = 'none';
 
 })
