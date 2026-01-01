@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="CSS/style.css">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management</title>
     <link rel="icon" type="image/png" href="img/image.png">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
@@ -16,7 +15,7 @@
     <form action="#" class="login-form" style="display: none;" id="login">
         <div class="form">
             <div class="form-top">
-                <img src="img/logo.png" alt="">
+                <img src="./img/image.png" alt="">
                 <h1>Task Management</h1>
             </div>
             <div class="input">
@@ -30,27 +29,26 @@
             <button id="login-button">Login</button>
             <hr>
             <p id="forgot-password">Forgot Password?</p>
-            <p id="re-form">Don't have an account? <a href="#regist">Register</a></p>
+            <p id="re-form">Don't have an account? <a href="#register">Register</a></p>
         </div>
-
     </form>
     <!-- register -->
-    <div class="register-container" style="display: block;" id="regist">
+    <div class="register-container" style="display: none;" id="register">
         <div class="img-logo">
-            <img src="img/LOGO.png" alt="Logo" class="logo">
+            <img src="./img/image.png" alt="Logo" class="logo">
         </div>
         <h1>Task Management</h1>
         <form>
             <div class="input">
-                <input type="text" name="inputText" placeholder="Full Name">
-                <input type="email" name="inputText" placeholder="Enter your email">
-                <input type="password" name="inputText" placeholder="Password">
-                <input type="password" name="inputText" placeholder="Confirm password">
-                <input type="numberphone" name="inputText" placeholder="Phone Number">
+                <input type="text" name="fullName" placeholder="Full Name">
+                <input type="email" name="email" placeholder="Enter your email">
+                <input type="password" name="password" placeholder="Password">
+                <input type="password" name="confirmPassword" placeholder="Confirm password">
+                <input type="tel" name="phoneNumber" placeholder="Phone Number">
                 <button type="submit" id="register-login">Register Now</button>
             </div>
-            <p class="link">Alredy have account ?
-                <span><a href="#login">Login</a></span>
+            <p class="link">Already have account ?
+                <span><a href="#login" id="loginLink">Login</a></span>
             </p>
         </form>
     </div>
@@ -61,12 +59,10 @@
             <div class="nav-left">
                 <a href="#" class="icon-title"><i class='bx bx-menu'></i></a>
                 <a href="#" class="title">Task Management</a>
-
             </div>
             <div class="nav-center">
                 <i class='bx bx-search'></i>
-                <input class="bt" type="text" placeholder="sharech">
-
+                <input class="bt" type="text" placeholder="Search">
             </div>
             <div class="nav-right">
                 <a href="#"><i class='bx bx-help-circle'></i></a>
@@ -83,23 +79,23 @@
                     <a href="#"><i class='bx bxs-dashboard'></i></a>
                     <a href="#">Dashbord</a>
                 </div>
-                <div class="side">
+                <div class="side" id="tasks">
                     <a href="#"><i class='bx bx-task'></i></a>
                     <a href="#">Task</a>
                 </div>
-                <div class="side">
+                <div class="side" id="category">
                     <a href="#"><i class='bx bxs-category'></i></a>
-                    <a href="#">Gatagarie</a>
+                    <a href="#">Categories</a>
                 </div>
-                <div class="side">
+                <div class="side" id="tag">
                     <a href="#"><i class='bx bxs-purchase-tag'></i></a>
-                    <a href="#" id="tage">Tage</a>
+                    <a href="#">Tags</a>
                 </div>
-                <div class="side">
+                <div class="side" id="profile">
                     <a href="#"><i class='bx bxs-user'></i></a>
                     <a href="#">Profile</a>
                 </div>
-                <div class="side">
+                <div class="side" id="setting">
                     <a href="#"><i class='bx bx-cog'></i></a>
                     <a href="#">Setting</a>
                 </div>
@@ -109,7 +105,7 @@
                 </div>
             </div>
 
-            <div class="main-1">
+            <div class="main-1" id="main-1">
                 <!-- show totale -->
                 <div class="main-1-top">
                     <div class="element1">
@@ -161,6 +157,45 @@
                             <button>Urge</button>
                         </div>
                     </div>
+                </div>
+                <!-- Task Filter -->
+                <div class="container" id="task" style="display: none;">
+                    <h2>Task Filters</h2>
+                    <div class="filters">
+                        <input type="text" id="search" placeholder="Search tasks..." onkeyup="filterTasks()">
+
+                        <select id="category" onchange="filterTasks()">
+                            <option value="">All Categories</option>
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Study">Study</option>
+                        </select>
+
+                        <select id="priority" onchange="filterTasks()">
+                            <option value="">All Priorities</option>
+                            <option value="Low">Low</option>
+                            <option value="Medium">Medium</option>
+                            <option value="High">High</option>
+                        </select>
+                        <select id="status" onchange="filterTasks()">
+                            <option value="">All Status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Completed">Completed</option>
+                        </select>
+                    </div>
+                    <div class="btn-add">
+                        <button class="add">Add</button>
+                    </div>
+                    <ul id="taskList">
+                        <li>
+                            <h4>Finish report</h4>
+                            <div class="button-group">
+                                <button class="edit">Edit</button>
+                                <button class="delete">Delete</button>
+                                <button class="soacetis">Soacetis</button>
+                            </div>
+                        </li>
+                    </ul>
 
                 </div>
 

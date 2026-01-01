@@ -1,126 +1,4 @@
-//task-filter- tasks.js
 
-let tasks = [
-  { title: "Finish report", category: "Work", priority: "High", status: "Pending" }
-];
-
-const taskList = document.getElementById("taskList");
-const searchInput = document.getElementById("search");
-const categoryFilter = document.getElementById("category");
-const priorityFilter = document.getElementById("priority");
-const statusFilter = document.getElementById("status");
-const addBtn = document.querySelector(".add");
-
-
-function renderTasks(filteredTasks = tasks) {
-  taskList.innerHTML = ""; // Clear previous
-
-  filteredTasks.forEach((task, index) => {
-    const li = document.createElement("li");
-
-
-    const title = document.createElement("h4");
-    title.textContent = task.title;
-    li.appendChild(title);
-
-
-    const details = document.createElement("p");
-    details.style.fontSize = "13px";
-    details.style.color = "#555";
-    details.style.marginTop = "4px";
-    details.textContent = `Category: ${task.category} | Priority: ${task.priority} | Status: ${task.status}`;
-    li.appendChild(details);
-
-    const btnGroup = document.createElement("div");
-    btnGroup.className = "button-group";
-
-    const editBtn = document.createElement("button");
-    editBtn.textContent = "Edit";
-    editBtn.className = "edit";
-    editBtn.onclick = () => editTask(index);
-
-    const deleteBtn = document.createElement("button");
-    deleteBtn.textContent = "Delete";
-    deleteBtn.className = "delete";
-    deleteBtn.onclick = () => deleteTask(index);
-
-    const detailBtn = document.createElement("button");
-    detailBtn.textContent = "Details";
-    detailBtn.className = "soacetis";
-    detailBtn.onclick = () => showDetails(task);
-
-    btnGroup.appendChild(editBtn);
-    btnGroup.appendChild(deleteBtn);
-    btnGroup.appendChild(detailBtn);
-
-    li.appendChild(btnGroup);
-    taskList.appendChild(li);
-  });
-}
-
-
-function filterTasks() {
-  const searchText = searchInput.value.toLowerCase();
-  const category = categoryFilter.value;
-  const priority = priorityFilter.value;
-  const status = statusFilter.value;
-
-  const filtered = tasks.filter(task => {
-    return (
-      task.title.toLowerCase().includes(searchText) &&
-      (category === "" || task.category === category) &&
-      (priority === "" || task.priority === priority) &&
-      (status === "" || task.status === status)
-    );
-  });
-
-  renderTasks(filtered);
-}
-
-
-addBtn.onclick = () => {
-  const title = prompt("Enter task title:");
-  const category = prompt("Enter category (Work / Personal / Study):");
-  const priority = prompt("Enter priority (Low / Medium / High):");
-  const status = prompt("Enter status (Pending / Completed):");
-
-  if (title) {
-    tasks.push({ title, category, priority, status });
-    renderTasks();
-  }
-};
-
-
-function editTask(index) {
-  const task = tasks[index];
-  const newTitle = prompt("Edit task title:", task.title);
-  const newCategory = prompt("Edit category:", task.category);
-  const newPriority = prompt("Edit priority:", task.priority);
-  const newStatus = prompt("Edit status:", task.status);
-
-  if (newTitle) {
-    tasks[index] = { title: newTitle, category: newCategory, priority: newPriority, status: newStatus };
-    renderTasks();
-  }
-}
-
-
-function deleteTask(index) {
-  if (confirm("Are you sure you want to delete this task?")) {
-    tasks.splice(index, 1);
-    renderTasks();
-  }
-}
-
-
-function showDetails(task) {
-  alert(`Title: ${task.title}\nCategory: ${task.category}\nPriority: ${task.priority}\nStatus: ${task.status}`);
-}
-
-renderTasks();
-
-// let notLogin = document.getElementById('notLoing');
-// console.log(notLogin)
 let notLogin = document.querySelector('.link span a');
 let register = document.querySelector('.register-container')
 let login = document.getElementById('login');
@@ -177,8 +55,8 @@ register_button.addEventListener('click', function (e) {
 
     // Validate registration data
     if (!userData.fullName || !userData.email || !userData.password || !userData.confirmPassword) {
-        
-          Swal.fire({
+
+        Swal.fire({
             icon: "error",
             title: "",
             text: "Please fill in all required fields!",
@@ -188,7 +66,7 @@ register_button.addEventListener('click', function (e) {
     }
 
     if (userData.password !== userData.confirmPassword) {
-         Swal.fire({
+        Swal.fire({
             icon: "error",
             title: "",
             text: "Passwords do not match",
@@ -219,7 +97,7 @@ loginButton.addEventListener('click', function (e) {
     const storedUserData = localStorage.getItem('userData');
 
     if (!storedUserData) {
-         Swal.fire({
+        Swal.fire({
             icon: "error",
             title: "",
             text: "No user found. Please register first!",
@@ -257,7 +135,7 @@ loginButton.addEventListener('click', function (e) {
             text: "Invalid email or password!",
             footer: '<a href="#">Why do I have this issue?</a>'
         });
-        
+
     }
 });
 
@@ -282,7 +160,6 @@ function getUserData() {
     return userData ? JSON.parse(userData) : null;
 }
 
-register.addEventListener('click',display)
 // Function to get current user session
 function getCurrentUser() {
     const currentUser = localStorage.getItem('currentUser');
@@ -304,15 +181,150 @@ logo.addEventListener('click', function () {
     let input = document.getElementsByName('inputText');
     console.log(input.value)
 })
+
+// all feature
+let main_1_top = document.querySelector('.main-1-top')
+let show_tage = document.querySelector('.tage');
+let show_task = document.getElementById('task');
+let show_categories = document.getElementById('category');
+let show_profile = document.getElementById('setting');
+let active = document.getElementById('active');
+// dashbord
+active.addEventListener('click', function () {
+    main_1_top.style.display = '';
+    show_tage.style.display = 'none';
+    show_task.style.display = 'none';
+    tage.style.background = 'none';
+    active.style.background = '#b3b1d326';
+    taskss.style.background = 'none';
+})
+
 // Tage
-let tage =document.getElementById('tage');
-tage.addEventListener('click', function(){
-    let main_1_top = document.querySelector('.main-1-top')
-    let show_tage = document.querySelector('.tage');
+let tage = document.getElementById('tag');
+tage.addEventListener('click', function () {
+
     show_tage.style.display = 'block';
     main_1_top.style.display = 'none';
-
-
-
+    show_task.style.display = 'none';
+    tage.style.background = '#b3b1d326';
+    active.style.background = 'none';
+    taskss.style.background = 'none';
+})
+// task
+let taskss = document.getElementById('tasks');
+taskss.addEventListener('click', function () {
+    show_task.style.display = 'block'
+    main_1_top.style.display = 'none';
+    show_tage.style.display = 'none'
+    taskss.style.background = '#b3b1d326';
+    active.style.background = 'none';
+    tage.style.background = 'none';
 
 })
+
+
+
+
+
+// function task
+let tasks = [];
+let selectedTaskIndex = null;
+
+// ADD TASK
+document.querySelector(".add").addEventListener("click", () => {
+    const title = prompt("Enter task title:");
+    if (!title) return;
+
+    const category = prompt("Category (Work / Personal / Study):", "Work");
+    const priority = prompt("Priority (Low / Medium / High):", "Medium");
+    const status = "Pending";
+
+    tasks.push({ title, category, priority, status });
+    renderTasks();
+});
+// RENDER TASKS
+function renderTasks(filteredTasks = tasks) {
+    const taskList = document.getElementById("taskList");
+    taskList.innerHTML = "";
+
+    filteredTasks.forEach((task, index) => {
+        const li = document.createElement("li");
+
+        li.innerHTML = `
+            <h4>${task.title}</h4>
+            <small>
+                Category: ${task.category} |
+                Priority: ${task.priority} |
+                Status: ${task.status}
+            </small>
+            <div class="button-group">
+                <button class="edit" onclick="editTask(${index})">Edit</button>
+                <button class="delete" onclick="deleteTask(${index})">Delete</button>
+                <button class="soacetis" onclick="viewDetail(${index})">Detail</button>
+            </div>
+        `;
+
+        taskList.appendChild(li);
+    });
+}
+
+// EDIT TASK
+function editTask(index) {
+    const task = tasks[index];
+
+    const newTitle = prompt("Edit title:", task.title);
+    if (!newTitle) return;
+
+    const newCategory = prompt("Edit category:", task.category);
+    const newPriority = prompt("Edit priority:", task.priority);
+    const newStatus = prompt("Edit status (Pending / Completed):", task.status);
+
+    tasks[index] = {
+        title: newTitle,
+        category: newCategory,
+        priority: newPriority,
+        status: newStatus
+    };
+
+    renderTasks();
+}
+
+// DELETE TASK
+function deleteTask(index) {
+    if (confirm("Are you sure you want to delete this task?")) {
+        tasks.splice(index, 1);
+        renderTasks();
+    }
+}
+
+// VIEW DETAIL
+function viewDetail(index) {
+    const task = tasks[index];
+    alert(`
+Task Detail
+-----------
+Title: ${task.title}
+Category: ${task.category}
+Priority: ${task.priority}
+Status: ${task.status}
+    `);
+}
+
+// FILTER TASKS
+function filterTasks() {
+    const search = document.getElementById("search").value.toLowerCase();
+    const category = document.getElementById("category").value;
+    const priority = document.getElementById("priority").value;
+    const status = document.getElementById("status").value;
+
+    const filtered = tasks.filter(task => {
+        return (
+            task.title.toLowerCase().includes(search) &&
+            (category === "" || task.category === category) &&
+            (priority === "" || task.priority === priority) &&
+            (status === "" || task.status === status)
+        );
+    });
+
+    renderTasks(filtered);
+}
