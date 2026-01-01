@@ -1,4 +1,286 @@
 /* Task Filter */
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.main{
+    width: 100%;
+    height: 100vh;
+    
+}
+/* navbar */
+.nav-bar{
+    height: 8%;
+    background-color: rgb(240, 240, 240);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 40px;
+    box-shadow: 1px 1px 10px rgb(174, 171, 171);
+
+}
+.nav-bar i{
+    font-size: 22px;
+    color: rgb(47, 46, 46);
+}
+.title{
+    font-size: 25px;
+    color:  rgb(0, 2, 70);
+    font-weight: bold;
+}
+.title, .icon-title{
+    text-decoration: none;
+}
+.nav-left i{
+    padding-top: 5px;
+}
+.nav-left{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.nav-left a i{
+    background-color: blue;
+    padding: 5px 15px;
+    color: rgb(235, 235, 235);
+    border-radius: 5px;
+}
+.nav-center{
+    display: flex;
+    align-items: center;
+    width: 40%;
+    gap: 10px;
+}
+.bt{
+    padding: 8px;
+    width: 300%;
+    background: none;
+    border-radius: 5px;
+    font-size: 16px;
+    border: solid 2px rgba(12, 1, 109, 0.359);
+}
+.nav-right{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.info{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.info .name{
+    font-size: 12px;
+    font-weight: bolder;
+}
+.info img{
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+}
+/* 
+sub-main */
+.sub-main{
+    display: flex;
+    height: 92vh;
+}
+/* side-bar */
+
+.side-bar{
+    flex: 0.6;
+    background-color: rgb(0, 2, 70);
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+
+}
+.side-bar i{
+    font-size: 20px;
+}
+.side{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    
+}
+#logout{
+    margin-top: 250px;
+    background-color: rgba(89, 88, 133, 0.184);
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+   
+}
+#logout a{
+    color: rgb(172, 0, 0);
+    font-weight: bold;
+    
+}
+.side-bar a{
+    text-decoration: none;
+    color: rgb(220, 220, 220);
+}
+.side-bar .side{
+    padding: 15px;
+
+}
+.side-bar .side:hover{
+    background-color: #b3b1d326;
+    border-radius: 5px;
+}
+#active{
+    background-color: #b3b1d326;
+    border-radius: 5px;
+}
+/* main-1 */
+.main-1{
+   flex: 3.5;
+    margin: 20px;
+    
+}
+.main-1 .main-1-top{
+    display: flex;
+    display: grid;
+    grid-template-columns:1fr 1fr 1fr 1fr;
+    gap: 30px;
+}
+.element1,.element2,.element3,.element4{
+    background-color: aqua;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+    box-shadow: 2px 2px 10px rgba(125, 122, 122, 0.353);
+
+}
+.total,.completed,.pending,.today{
+    font-size: larger;
+    color: white;
+    font-weight: bold;
+
+}
+.num{
+    font-size: 45px;
+    color: white;
+    font-weight: bolder;
+}
+.element1{
+    background-color: rgba(17, 0, 255, 0.677);
+}
+.element2{
+    background-color: rgba(1, 163, 42, 0.7);
+}
+.element3{
+    background-color: rgba(220, 185, 6, 0.729);
+}
+.element4{
+    background-color:teal;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    /* display: flex;
+    justify-content: center; */
+    background-image: url(../img/bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    backdrop-filter: blur(7px);
+}
+
+/* Form */
+.login-form {
+    height: 90vh;
+    /* border: 1px solid black; */
+    /* width: 100%; */
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-content: center;
+    align-items: center;
+}
+
+.form {
+    box-shadow: 1px 1px 20px rgba(200, 200, 200, 0.648);
+    background-color: #ffffffad;
+    border-radius: 5px;
+    padding: 50px;
+
+
+
+}
+
+.show-pas {
+    align-self: self-start;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.form-top img {
+    width: 100px;
+    height: 100px;
+    margin-top: 10px;
+}
+
+.form-top h1 {
+ 
+    text-shadow: 2px 2px 5px rgba(7, 3, 111, 0.87);
+}
+
+.input {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input input {
+    padding: 5px;
+    margin: 7px 0px;
+    font-size: 14px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid rgba(11, 4, 128, 0.615);
+}
+
+.login-form button {
+    background-color: blue;
+    color: white;
+    border: none;
+    font-size: 14px;
+    margin-top: 10px;
+    width: 400px;
+    padding: 10px;
+
+}
+
+.login-form hr {
+    margin-top: 20px;
+    width: 100px;
+}
+
+#forgot-password {
+    font-weight: bold;
+}
+
+.login-form p {
+    font-size: 12px;
+    margin: 10px;
+}
+
+.login-form p a {
+    color: #1e17eb;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* //thy */
 * {
   margin: 0;
   padding: 0;
@@ -62,8 +344,23 @@ body {
 }
 
 
+<<<<<<< HEAD
 #taskList {
   list-style: none;
+=======
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="numberphone"] {
+    padding: 10px;
+    border: none;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    background: none;
+    border-bottom: 2px solid rgb(162, 167, 182);
+    color: rgb(23, 21, 21);
+
+>>>>>>> feature/develop
 }
 
 #taskList li {
@@ -102,6 +399,7 @@ body {
   background-color: #1e7e34;
 }
 
+<<<<<<< HEAD
 #taskList li .delete {
   background-color: #dc3545;
 }
@@ -123,3 +421,74 @@ body {
   display: flex;
   gap: 5px;
 }
+=======
+}
+
+
+/* Tage */
+
+.tage{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 2px 2px 10px rgba(182, 176, 176, 0.295);
+    margin-bottom: 50px;
+}
+.top .Tags {
+    padding:20px 40px;
+    background-color: rgb(7, 7, 170);
+    color: white;
+}
+.top .top-right{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgb(5, 5, 207);
+    color: white;
+    padding: 10px;
+    margin-right: 30px;
+    border-radius: 5px;
+
+}
+.tage .shearch{
+    display: flex;
+    box-shadow: 2px 2px 10px rgba(182, 176, 176, 0.295);
+    padding: 15px;
+    gap: 15px;
+    align-items: center;
+}
+.tage .shearch input{
+    padding: 8px;
+    width: 80%;
+    border: 1px solid rgba(215, 213, 213, 0.674);
+    border-radius: 5px;
+}
+.elemen{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+     box-shadow: 2px 2px 10px rgba(182, 176, 176, 0.295);
+     padding: 15px;
+    
+}
+.elemen .left{
+    display: flex;
+    gap: 20px;
+}
+.elemen .left .info .text2{
+    display: flex;
+    gap: 30px;
+}
+.elemen .right button{
+    padding: 8px 20px;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    background-color: rgb(213, 15, 15);
+}
+>>>>>>> feature/develop
