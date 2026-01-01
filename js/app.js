@@ -1,4 +1,3 @@
-
 let notLogin = document.querySelector('.link span a');
 let register = document.querySelector('.register-container')
 let login = document.getElementById('login');
@@ -55,8 +54,8 @@ register_button.addEventListener('click', function (e) {
 
     // Validate registration data
     if (!userData.fullName || !userData.email || !userData.password || !userData.confirmPassword) {
-
-        Swal.fire({
+        
+          Swal.fire({
             icon: "error",
             title: "",
             text: "Please fill in all required fields!",
@@ -66,7 +65,7 @@ register_button.addEventListener('click', function (e) {
     }
 
     if (userData.password !== userData.confirmPassword) {
-        Swal.fire({
+         Swal.fire({
             icon: "error",
             title: "",
             text: "Passwords do not match",
@@ -97,7 +96,7 @@ loginButton.addEventListener('click', function (e) {
     const storedUserData = localStorage.getItem('userData');
 
     if (!storedUserData) {
-        Swal.fire({
+         Swal.fire({
             icon: "error",
             title: "",
             text: "No user found. Please register first!",
@@ -135,7 +134,7 @@ loginButton.addEventListener('click', function (e) {
             text: "Invalid email or password!",
             footer: '<a href="#">Why do I have this issue?</a>'
         });
-
+        
     }
 });
 
@@ -225,106 +224,3 @@ taskss.addEventListener('click', function () {
 
 
 
-
-// function task
-let tasks = [];
-let selectedTaskIndex = null;
-
-// ADD TASK
-document.querySelector(".add").addEventListener("click", () => {
-    const title = prompt("Enter task title:");
-    if (!title) return;
-
-    const category = prompt("Category (Work / Personal / Study):", "Work");
-    const priority = prompt("Priority (Low / Medium / High):", "Medium");
-    const status = "Pending";
-
-    tasks.push({ title, category, priority, status });
-    renderTasks();
-});
-// RENDER TASKS
-function renderTasks(filteredTasks = tasks) {
-    const taskList = document.getElementById("taskList");
-    taskList.innerHTML = "";
-
-    filteredTasks.forEach((task, index) => {
-        const li = document.createElement("li");
-
-        li.innerHTML = `
-            <h4>${task.title}</h4>
-            <small>
-                Category: ${task.category} |
-                Priority: ${task.priority} |
-                Status: ${task.status}
-            </small>
-            <div class="button-group">
-                <button class="edit" onclick="editTask(${index})">Edit</button>
-                <button class="delete" onclick="deleteTask(${index})">Delete</button>
-                <button class="soacetis" onclick="viewDetail(${index})">Detail</button>
-            </div>
-        `;
-
-        taskList.appendChild(li);
-    });
-}
-
-// EDIT TASK
-function editTask(index) {
-    const task = tasks[index];
-
-    const newTitle = prompt("Edit title:", task.title);
-    if (!newTitle) return;
-
-    const newCategory = prompt("Edit category:", task.category);
-    const newPriority = prompt("Edit priority:", task.priority);
-    const newStatus = prompt("Edit status (Pending / Completed):", task.status);
-
-    tasks[index] = {
-        title: newTitle,
-        category: newCategory,
-        priority: newPriority,
-        status: newStatus
-    };
-
-    renderTasks();
-}
-
-// DELETE TASK
-function deleteTask(index) {
-    if (confirm("Are you sure you want to delete this task?")) {
-        tasks.splice(index, 1);
-        renderTasks();
-    }
-}
-
-// VIEW DETAIL
-function viewDetail(index) {
-    const task = tasks[index];
-    alert(`
-Task Detail
------------
-Title: ${task.title}
-Category: ${task.category}
-Priority: ${task.priority}
-Status: ${task.status}
-    `);
-}
-
-// FILTER TASKS
-function filterTasks() {
-    const search = document.getElementById("search").value.toLowerCase();
-    const category = document.getElementById("category").value;
-    const priority = document.getElementById("priority").value;
-    const status = document.getElementById("status").value;
-
-    const filtered = tasks.filter(task => {
-        return (
-            task.title.toLowerCase().includes(search) &&
-            (category === "" || task.category === category) &&
-            (priority === "" || task.priority === priority) &&
-            (status === "" || task.status === status)
-        );
-    });
-
-    renderTasks(filtered);
-}

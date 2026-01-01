@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="CSS/style.css">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management</title>
     <link rel="icon" type="image/png" href="img/image.png">
-    <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="./css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
@@ -28,15 +28,7 @@
                 </div>
             </div>
             <button id="login-button">Login</button>
-            <hr>
             <p id="forgot-password">Forgot Password?</p>
-            <p id="re-form">Don't have an account? <a href="#register">Register</a></p>
-        </div>
-    </form>
-    <!-- register -->
-    <div class="register-container" style="display: none;" id="register">
-        <div class="img-logo">
-            <img src="./img/image.png" alt="Logo" class="logo">
             <p id="re-form">Don't have an account? <a href="#regist">Register</a></p>
         </div>
 
@@ -44,34 +36,11 @@
     <!-- register -->
     <div class="register-container" style="display: block;" id="regist">
         <div class="img-logo">
-            <img src="img/image.png" alt="Logo" class="logo">
+            <img src="./img/image.png" alt="Logo" class="logo">
         </div>
         <h1>Task Management</h1>
         <form>
             <div class="input">
-                <input type="text" name="fullName" placeholder="Full Name">
-                <input type="email" name="email" placeholder="Enter your email">
-                <input type="password" name="password" placeholder="Password">
-                <input type="password" name="confirmPassword" placeholder="Confirm password">
-                <input type="tel" name="phoneNumber" placeholder="Phone Number">
-                <button type="submit" id="register-login">Register Now</button>
-            </div>
-            <p class="link">Already have account ?
-                <span><a href="#login" id="loginLink">Login</a></span>
-            </p>
-        </form>
-    </div>
-
-    <!-- dashbord -->
-    <div class="main" style="display: none;" id="main">
-        <div class="nav-bar">
-            <div class="nav-left">
-                <a href="#" class="icon-title"><i class='bx bx-menu'></i></a>
-                <a href="#" class="title">Task Management</a>
-            </div>
-            <div class="nav-center">
-                <i class='bx bx-search'></i>
-                <input class="bt" type="text" placeholder="Search">
                 <input type="text" name="inputText" placeholder="Full Name">
                 <input type="email" name="inputText" placeholder="Enter your email">
                 <input type="password" name="inputText" placeholder="Password">
@@ -84,6 +53,8 @@
             </p>
         </form>
     </div>
+
+    <!-- dashbord -->
     <div class="main" style="display: none;" id="main">
         <div class="nav-bar">
             <div class="nav-left">
@@ -117,34 +88,17 @@
                 </div>
                 <div class="side" id="category">
                     <a href="#"><i class='bx bxs-category'></i></a>
-                    <a href="#">Categories</a>
+                    <a href="#">Gatagarie</a>
                 </div>
                 <div class="side" id="tag">
                     <a href="#"><i class='bx bxs-purchase-tag'></i></a>
-                    <a href="#">Tags</a>
+                    <a href="#" id="tage">Tage</a>
                 </div>
                 <div class="side" id="profile">
                     <a href="#"><i class='bx bxs-user'></i></a>
                     <a href="#">Profile</a>
                 </div>
                 <div class="side" id="setting">
-                <div class="side">
-                    <a href="#"><i class='bx bx-task'></i></a>
-                    <a href="#">Task</a>
-                </div>
-                <div class="side">
-                    <a href="#"><i class='bx bxs-category'></i></a>
-                    <a href="#">Gatagarie</a>
-                </div>
-                <div class="side">
-                    <a href="#"><i class='bx bxs-purchase-tag'></i></a>
-                    <a href="#">Tage</a>
-                </div>
-                <div class="side">
-                    <a href="#"><i class='bx bxs-user'></i></a>
-                    <a href="#">Profile</a>
-                </div>
-                <div class="side">
                     <a href="#"><i class='bx bx-cog'></i></a>
                     <a href="#">Setting</a>
                 </div>
@@ -154,8 +108,6 @@
                 </div>
             </div>
 
-            <div class="main-1" id="main-1">
-                <!-- show totale -->
             <div class="main-1">
                 <div class="main-1-top">
                     <div class="element1">
@@ -175,7 +127,7 @@
                         <div class="num">0</div>
                     </div>
                 </div>
-                <!-- Tage -->
+                <!-- tage -->
                 <div class="tage" style="display: none;">
                     <div class="top">
                         <div class="Tags">Tage</div>
@@ -207,8 +159,9 @@
                             <button>Urge</button>
                         </div>
                     </div>
+
                 </div>
-                <!-- Task Filter -->
+                <!-- task -->
                 <div class="container" id="task" style="display: none;">
                     <h2>Task Filters</h2>
                     <div class="filters">
