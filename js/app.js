@@ -1,40 +1,53 @@
-document.querySelector(".login-form").addEventListener("submit", function (e) {
-    e.preventDefault(); // stop page refresh
+// Profile
+// function editProfile() {
+//     document.getElementById("viewProfile").classList.add("hidden");
+//     document.getElementById("editProfileForm").classList.remove("hidden");
 
-    let email = document.getElementById("email").value;
-    let password = document.getElementById("password").value;
+// }
 
-    if (email === "" || password === "") {
-        alert("Please fill all fields");
-        return;
+// function saveProfile() {
+//     const name = document.getElementById("nameInput").value;
+//     const email = document.getElementById("emailInput").value;
+//     const password = document.getElementById("passwordInput").value;
+
+//     document.getElementById("displayName").innerText = name;
+//     document.getElementById("displayEmail").innerText = email;
+//     document.getElementById("displayPassword").innerText = password;
+
+//     document.getElementById("editProfileForm").classList.add("hidden");
+//     document.getElementById("viewProfile").classList.remove("hidden");
+
+// }
+
+function editProfile() {
+    document.getElementById("viewProfile").classList.add("hidden");
+    document.getElementById("editProfileForm").classList.remove("hidden");
+}
+
+function togglePassword() {
+    const passwordInput = document.getElementById("passwordInput");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
     }
+}
 
-    // 1. Get existing users from localStorage
-    let users = JSON.parse(localStorage.getItem("users")) || [];
+function saveProfile() {
+    const name = document.getElementById("nameInput").value;
+    const email = document.getElementById("emailInput").value;
+    const password = document.getElementById("passwordInput").value;
 
-    // 2. Check if user already exists
-    let userExists = users.find(user => user.email === email);
+    document.getElementById("displayName").innerText = name;
+    document.getElementById("displayEmail").innerText = email;
 
-    if (userExists) {
-        alert("User already exists");
-        return;
-    }
+    // 🔒 Always hide password after save
+    document.getElementById("displayPassword").innerText = "*".repeat(password.length);
 
-    // 3. Create new user object
-    let newUser = {
-        email: email,
-        password: password // ❌ not secure (for learning only)
-    };
+    // Reset password input to hidden
+    document.getElementById("passwordInput").type = "password";
 
-    // 4. Add user to array
-    users.push(newUser);
-
-    // 5. Save back to localStorage (ONE KEY)
-    localStorage.setItem("users", JSON.stringify(users));
-
-    alert("User saved successfully");
-
-    // Clear inputs
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
-});
+    document.getElementById("editProfileForm").classList.add("hidden");
+    document.getElementById("viewProfile").classList.remove("hidden");
+}

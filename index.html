@@ -1,36 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="stylesheet" href="CSS/style.css">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="CSS/style.css">
 </head>
 
 <body>
-    <!-- form login -->
-    <form action="#" class="login-form">
-        <div class="form">
-            <div class="form-top">
-                <img src="img/logo.png" alt="">
-                <h3>Task Management</h3>
-            </div>
-            <div class="input">
-                <input type="email" name="email" id="email" placeholder="Email">
-                <input type="password" name="password" id="password" placeholder="Password">
-                <div class="show-pas">
-                    <input type="checkbox" name="show" id="show">
-                    <label for="text">Show password</label>
-                </div>
-            </div>
-            <button type="submit">Login</button>
-            <hr>
-            <p id="forgot-password">Forgot Password?</p>
-            <p>Don't have an account? <a href="#">Register</a></p>
+
+    <!-- Profile start -->
+    <div class="profile">
+        <img src="img/image.png" alt="">
+        <h3><span id="displayName">Voeurn King</span></h3>
+        <hr>
+
+        <!-- View mode -->
+        <div class="profile-info" id="viewProfile">
+            <h4>Email: <span id="displayEmail">king.voeurn@student.passerellesnumeriques.org</span></h4>
+            <h4>Passwood: <span id="displayPassword">#########</span></h4>
+            <button onclick="editProfile()">Update profile</button>
         </div>
 
-    </form>
+        <!-- Edit mode -->
+        <form class="profile-info hidden" id="editProfileForm">
+            <label>
+                Name:
+                <input type="text" id="nameInput" value="Voeurn King">
+            </label>
+
+            <label>
+                Email:
+                <input type="email" id="emailInput" value="king.voeurn@student.passerellesnumeriques.org">
+            </label>
+
+            <label>
+                Password:
+                <input type="password" id="passwordInput" value="12345678">
+            </label>
+
+            <div class="show-password">
+                <label id="showPassword" for="showPwd">                  
+                    <input type="checkbox" id="showPwd" onclick="togglePassword()">
+                    Show password
+                </label>
+                
+            </div>
+
+            <button type="button" onclick="saveProfile()">Save</button>
+        </form>
+    </div>
+
+    <!-- Profile end -->
     <script src="js/app.js"></script>
 
 
