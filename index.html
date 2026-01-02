@@ -5,10 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>Task Management</title>
     <link rel="icon" type="image/png" href="img/image.png">
     <link rel="stylesheet" href="./css/style.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -24,7 +26,7 @@
                 <input type="password" name="password" id="password" placeholder="Password">
                 <div class="show-pas">
                     <input type="checkbox" name="show" id="show">
-                    <label for="Show">Show password</label>
+                    <label for="text">Show password</label>
                 </div>
             </div>
             <button id="login-button">Login</button>
@@ -127,39 +129,38 @@
                         <div class="num">0</div>
                     </div>
                 </div>
-                <!-- tage -->
-                <div class="tage" style="display: none;">
+                <!-- Chart -->
+                <div class="chart-container" id="chart">
+                    <canvas id="taskChart"></canvas>
+                </div>
+                <!-- Tage -->
+                <div class="tage" id="tage" style="display: none;">
                     <div class="top">
-                        <div class="Tags">Tage</div>
+                        <div class="Tags">Tags</div>
                         <div class="top-right">
                             <i class='bx bxs-purchase-tag'></i>
-                            <div class="add">Add</div>
+                            <div class="add" onclick="showAddTagForm()">Add</div>
                         </div>
                     </div>
-                    <div class="shearch">
+                    
+                    <!-- Add Tag Form -->
+                    <div class="shearch" id="addTagForm" style="display: none;">
                         <div class="text">Tag Name: </div>
-                        <input type="text">
+                        <input type="text" id="tagInput" placeholder="Enter tag name">
+                        <button onclick="addTag()">Add Tag</button>
                     </div>
+                    
+                    <!-- Tags List -->
                     <div class="elemen">
                         <div class="left">
-                            <div class="icon">
-                                <div class="icon1">icon</div>
-                                <div class="icon1">icon</div>
-                            </div>
                             <div class="info">
-                                <div class="text1">Urgent</div>
-                                <div class="text2">
-                                    <div class="item">1</div>
-                                    <div class="item">2</div>
-                                    <div class="item">3</div>
+                                <div class="text1">Available Tags</div>
+                                <div id="tagsList" class="text2">
+                                    <!-- Tags will be rendered here -->
                                 </div>
                             </div>
                         </div>
-                        <div class="right">
-                            <button>Urge</button>
-                        </div>
                     </div>
-
                 </div>
                 <!-- task -->
                 <div class="container" id="task" style="display: none;">
@@ -200,6 +201,176 @@
                         </li> -->
                     </ul>
 
+                </div>
+                <!-- Gatagarie -->
+
+                <div class="container" id="categories-list" style="display: none;">
+
+                    <!-- Add Category Section -->
+                    <div class="card">
+                        <div class="card-content">
+                            <h2 class="section-title">Add Category</h2>
+                            <div class="input-group">
+                                <input type="text" id="categoryInput" placeholder="Enter category name"
+                                    class="input-field">
+                                <button onclick="addCategory()" class="btn btn-primary">
+                                    Add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categories List -->
+                    <div class="card">
+                        <div class="card-content">
+                            <h2 class="section-title">Categories</h2>
+                            <div id="categoriesList" class="categories-list">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div class="container" id="settings-section" style="display: none;">
+                    <div class="settings-container">
+                        <h2 class="settings-title">Settings</h2>
+                        
+                        <!-- Appearance Settings -->
+                        <div class="settings-card">
+                            <div class="settings-header">
+                                <i class='bx bx-palette'></i>
+                                <h3>Appearance</h3>
+                            </div>
+                            <div class="settings-content">
+                                <div class="setting-item">
+                                    <label for="theme-select">Theme</label>
+                                    <select id="theme-select" class="setting-select">
+                                        <option value="light">Light Mode</option>
+                                        <option value="dark">Dark Mode</option>
+                                        <option value="auto">Auto (System)</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <label for="color-scheme">Color Scheme</label>
+                                    <select id="color-scheme" class="setting-select">
+                                        <option value="purple">Purple</option>
+                                        <option value="blue">Blue</option>
+                                        <option value="green">Green</option>
+                                        <option value="red">Red</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <label for="font-size">Font Size</label>
+                                    <select id="font-size" class="setting-select">
+                                        <option value="small">Small</option>
+                                        <option value="medium">Medium</option>
+                                        <option value="large">Large</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notification Settings -->
+                        <div class="settings-card">
+                            <div class="settings-header">
+                                <i class='bx bx-bell'></i>
+                                <h3>Notifications</h3>
+                            </div>
+                            <div class="settings-content">
+                                <div class="setting-item">
+                                    <label for="task-reminders">Task Reminders</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="task-reminders" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <label for="due-date-alerts">Due Date Alerts</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="due-date-alerts" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <label for="sound-effects">Sound Effects</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="sound-effects" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Task Management Settings -->
+                        <div class="settings-card">
+                            <div class="settings-header">
+                                <i class='bx bx-task'></i>
+                                <h3>Task Management</h3>
+                            </div>
+                            <div class="settings-content">
+                                <div class="setting-item">
+                                    <label for="default-priority">Default Priority</label>
+                                    <select id="default-priority" class="setting-select">
+                                        <option value="Low">Low</option>
+                                        <option value="Medium">Medium</option>
+                                        <option value="High">High</option>
+                                    </select>
+                                </div>
+                                <div class="setting-item">
+                                    <label for="auto-categorize">Auto-categorize Tasks</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="auto-categorize" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <label for="show-completed">Show Completed Tasks</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="show-completed" class="toggle-input" checked>
+                                        <span class="toggle-slider"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data & Privacy Settings -->
+                        <div class="settings-card">
+                            <div class="settings-header">
+                                <i class='bx bx-shield'></i>
+                                <h3>Data & Privacy</h3>
+                            </div>
+                            <div class="settings-content">
+                                <div class="setting-item">
+                                    <label for="auto-backup">Auto Backup</label>
+                                    <div class="toggle-switch">
+                                        <input type="checkbox" id="auto-backup" class="toggle-input">
+                                        <span class="toggle-slider"></span>
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <button onclick="exportData()" class="btn btn-secondary">
+                                        <i class='bx bx-download'></i> Export Data
+                                    </button>
+                                </div>
+                                <div class="setting-item">
+                                    <button onclick="clearAllData()" class="btn btn-danger">
+                                        <i class='bx bx-trash'></i> Clear All Data
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="settings-actions">
+                            <button onclick="saveSettings()" class="btn btn-primary">
+                                <i class='bx bx-save'></i> Save Settings
+                            </button>
+                            <button onclick="resetSettings()" class="btn btn-secondary">
+                                <i class='bx bx-reset'></i> Reset to Default
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
             </div>
