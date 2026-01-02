@@ -30,6 +30,17 @@ function display() {
     register.style.display = 'none';
 }
 notLogin.addEventListener('click', display)
+
+document.getElementById("show").addEventListener("click", function () {
+  const passwordInput = document.getElementById("password");
+
+  if (this.checked) {
+    passwordInput.type = "text";
+  }else {
+    passwordInput.type = "password";
+  }
+});
+
 // register
 function show_regist() {
     login.style.display = 'none';
