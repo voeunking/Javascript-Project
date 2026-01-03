@@ -4,7 +4,7 @@ let tags = JSON.parse(localStorage.getItem('tags')) || ['Urgent', 'Important', '
 function showAddTagForm() {
     const addForm = document.getElementById('addTagForm');
     const tagsList = document.getElementById('tagsList');
-    
+
     if (addForm.style.display === 'none' || addForm.style.display === '') {
         addForm.style.display = 'block';
         tagsList.style.display = 'none';
@@ -44,7 +44,7 @@ function addTag() {
     localStorage.setItem('tags', JSON.stringify(tags));
     renderTags();
     input.value = '';
-    
+
     Swal.fire({
         icon: "success",
         title: "Tag Added!",
@@ -78,7 +78,7 @@ function editTag(oldName) {
     tags[index] = newName.trim();
     localStorage.setItem('tags', JSON.stringify(tags));
     renderTags();
-    
+
     Swal.fire({
         icon: "success",
         title: "Tag Updated!",
@@ -90,7 +90,7 @@ function editTag(oldName) {
 
 function deleteTag(name) {
     const taskCount = tasks.filter(task => task.tags && task.tags.includes(name)).length;
-    
+
     if (taskCount > 0) {
         Swal.fire({
             title: "Cannot Delete Tag",
@@ -99,7 +99,7 @@ function deleteTag(name) {
         });
         return;
     }
-    
+
     Swal.fire({
         title: "Delete Tag?",
         text: `Are you sure you want to delete "${name}"?`,
@@ -113,7 +113,7 @@ function deleteTag(name) {
             tags = tags.filter(tag => tag !== name);
             localStorage.setItem('tags', JSON.stringify(tags));
             renderTags();
-            
+
             Swal.fire({
                 icon: "success",
                 title: "Deleted!",
@@ -128,13 +128,13 @@ function deleteTag(name) {
 function renderTags() {
     const tagsList = document.getElementById('tagsList');
     if (!tagsList) return;
-    
+
     tagsList.innerHTML = '';
 
     tags.forEach((tag, index) => {
         const color = colors[index % colors.length];
         const taskCount = tasks.filter(task => task.tags && task.tags.includes(tag)).length;
-        
+
         const tagElement = document.createElement('div');
         tagElement.className = 'category-item';
         tagElement.setAttribute('data-tag', tag);
@@ -153,7 +153,7 @@ function renderTags() {
 
         tagsList.appendChild(tagElement);
     });
-    
+
     localStorage.setItem('tags', JSON.stringify(tags));
 }
 
@@ -330,7 +330,7 @@ function editCategory(oldName) {
 
 function deleteCategory(name) {
     const taskCount = tasks.filter(task => task.category === name).length;
-    
+
     if (taskCount > 0) {
         Swal.fire({
             title: "Cannot Delete Category",
@@ -340,7 +340,7 @@ function deleteCategory(name) {
         });
         return;
     }
-    
+
     Swal.fire({
         title: "Delete Category?",
         text: `Are you sure you want to delete "${name}"?`,
@@ -354,7 +354,7 @@ function deleteCategory(name) {
             categories = categories.filter(cat => cat !== name);
             localStorage.setItem('categories', JSON.stringify(categories));
             renderCategories();
-            
+
             Swal.fire({
                 icon: "success",
                 title: "Deleted!",
@@ -369,13 +369,13 @@ function deleteCategory(name) {
 function renderCategories() {
     const categoriesList = document.getElementById('categoriesList');
     if (!categoriesList) return;
-    
+
     categoriesList.innerHTML = '';
 
     categories.forEach((category, index) => {
         const color = colors[index % colors.length];
         const taskCount = tasks.filter(task => task.category === category).length;
-        
+
         const categoryElement = document.createElement('div');
         categoryElement.className = 'category-item';
         categoryElement.setAttribute('data-category', category);
@@ -394,7 +394,7 @@ function renderCategories() {
 
         categoriesList.appendChild(categoryElement);
     });
-    
+
     // Save categories to localStorage
     localStorage.setItem('categories', JSON.stringify(categories));
 }
@@ -531,11 +531,18 @@ register_button.addEventListener('click', function (e) {
     // Show dashboard
     let main = document.getElementById('main');
     let name = document.getElementById('name');
+    let show_imails = document.getElementById('displayEmail');
+    let show_passwords = document.getElementById('displayPassword');
+    let show_names = document.getElementById('displayName');
+    show_names.textContent = userData.fullName
+    show_imails.textContent = userData.email;
+    show_passwords.textContent = userData.password;
     name.textContent = userData.fullName;
     login.style.display = 'block';
     register.style.display = 'none';
 
 })
+
 // Login functionality
 let loginButton = document.getElementById('login-button');
 loginButton.addEventListener('click', function (e) {
@@ -631,6 +638,8 @@ let logo = document.querySelector('.logo')
 logo.addEventListener('click', function () {
     let input = document.getElementsByName('inputText');
     console.log(input.value)
+
+
 })
 
 // all feature
@@ -638,10 +647,11 @@ let main_1_top = document.querySelector('.main-1-top')
 let show_tage = document.querySelector('.tage');
 let show_task = document.getElementById('task');
 let show_categories = document.getElementById('category');
-let show_profile = document.getElementById('setting');
+let show_profile = document.getElementById('profile');
 let active = document.getElementById('active');
 let chart = document.getElementById('chart');
-// dashbord
+let setting = document.getElementById('setting');
+// dashbord 
 active.addEventListener('click', function () {
     main_1_top.style.display = '';
     show_tage.style.display = 'none';
@@ -652,6 +662,10 @@ active.addEventListener('click', function () {
     show_categories.style.background = 'none';
     categoriesList.style.display = 'none';
     chart.style.display = 'block';
+    show_profile.style.background = 'none';
+    profile.style.display = 'none';
+     show_setting.style.display = 'none';
+    setting.style.background = 'none';
 })
 
 // Tage
@@ -667,7 +681,11 @@ tage.addEventListener('click', function () {
     show_categories.style.background = 'none';
     categoriesList.style.display = 'none';
     chart.style.display = 'none';
-    
+    show_profile.style.background = 'none';
+    profile.style.display = 'none';
+     show_setting.style.display = 'none';
+    setting.style.background = 'none';
+
     // Initialize tags display
     initializeTags();
 })
@@ -683,6 +701,10 @@ taskss.addEventListener('click', function () {
     show_categories.style.background = 'none';
     categoriesList.style.display = 'none';
     chart.style.display = 'none';
+    show_profile.style.background = 'none';
+    profile.style.display = 'none';
+     show_setting.style.display = 'none';
+    setting.style.background = 'none';
 
 })
 // categories
@@ -697,20 +719,53 @@ show_categories.addEventListener('click', function () {
     taskss.style.background = 'none';
     categoriesList.style.display = 'block';
     chart.style.display = 'none';
+    show_profile.style.background = 'none';
+    profile.style.display = 'none';
+     show_setting.style.display = 'none';
+    setting.style.background = 'none';
 
 })
 
+// profile
+let profile = document.getElementById('profiles');
+show_profile.addEventListener('click', function () {
+    show_task.style.display = 'none'
+    main_1_top.style.display = 'none';
+    show_tage.style.display = 'none'
+    show_categories.style.background = 'none';
+    show_profile.style.background = '#b3b1d326';
+    active.style.background = 'none';
+    tage.style.background = 'none';
+    taskss.style.background = 'none';
+    categoriesList.style.display = 'none';
+    chart.style.display = 'none';
+    profile.style.display = 'block';
+    show_setting.style.display = 'none';
+    setting.style.background = 'none';
+
+})
+
+// setting
+let show_setting =document.getElementById('settings-section');
+setting.addEventListener('click',function(){
+    show_setting.style.display = 'block';
+    setting.style.background = '#b3b1d326';
+    show_task.style.display = 'none'
+    main_1_top.style.display = 'none';
+    show_tage.style.display = 'none'
+    show_categories.style.background = 'none';
+    show_profile.style.background = 'none';
+    active.style.background = 'none';
+    tage.style.background = 'none';
+    taskss.style.background = 'none';
+    categoriesList.style.display = 'none';
+    chart.style.display = 'none';
+    profile.style.display = 'none';
+})
+
 // function task
-
-
 let tasks = JSON.parse(localStorage.getItem('tasks')) || [
-    { title: "Finish report", category: "Work", priority: "High", status: "Pending", createdAt: new Date().toISOString() },
-    { title: "Team meeting", category: "Work", priority: "Medium", status: "Pending", createdAt: new Date().toISOString() },
-    { title: "Grocery shopping", category: "Personal", priority: "Low", status: "Pending", createdAt: new Date().toISOString() },
-    { title: "Study JavaScript", category: "Study", priority: "High", status: "Completed", createdAt: new Date().toISOString() },
-    { title: "Project presentation", category: "Work", priority: "High", status: "Completed", createdAt: new Date().toISOString() },
-    { title: "Gym workout", category: "Personal", priority: "Medium", status: "Pending", createdAt: new Date().toISOString() },
-    { title: "Read documentation", category: "Study", priority: "Medium", status: "Pending", createdAt: new Date().toISOString() }
+    ''
 ];
 
 // Initialize filters and render tasks when DOM is loaded
@@ -792,7 +847,7 @@ function filterTasks() {
             const categoryMatch = category === "" || task.category === category;
             const priorityMatch = priority === "" || task.priority === priority;
             const statusMatch = status === "" || task.status === status;
-            
+
             return titleMatch && categoryMatch && priorityMatch && statusMatch;
         });
 
@@ -881,26 +936,26 @@ addBtn.onclick = () => {
         if (result.isConfirmed) {
             const { title, category, priority, status, selectedTags } = result.value;
             const tagArray = selectedTags ? selectedTags.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
-            
-            const newTask = { 
-                title, 
-                category, 
-                priority, 
-                status, 
+
+            const newTask = {
+                title,
+                category,
+                priority,
+                status,
                 tags: tagArray,
                 createdAt: new Date().toISOString(),
                 id: Date.now() // Unique ID for each task
             };
-            
+
             tasks.push(newTask);
-            
+
             // Add category to categories list if it doesn't exist
             if (!categories.includes(category)) {
                 categories.push(category);
                 localStorage.setItem('categories', JSON.stringify(categories));
                 renderCategories(); // Update categories display
             }
-            
+
             // Add new tags to tags list if they don't exist
             tagArray.forEach(tag => {
                 if (!tags.includes(tag)) {
@@ -908,11 +963,11 @@ addBtn.onclick = () => {
                     localStorage.setItem('tags', JSON.stringify(tags));
                 }
             });
-            
+
             renderTasks();
             updateTaskStats();
             renderTags(); // Update tags display
-            
+
             // Show success message
             Swal.fire({
                 icon: "success",
@@ -939,18 +994,18 @@ function editTask(index) {
         const oldCategory = task.category;
         const oldTags = task.tags || [];
         const newTagArray = newTags ? newTags.split(',').map(tag => tag.trim()).filter(tag => tag) : [];
-        
+
         // Update task
-        tasks[index] = { 
-            title: newTitle, 
-            category: newCategory, 
-            priority: newPriority, 
-            status: newStatus, 
+        tasks[index] = {
+            title: newTitle,
+            category: newCategory,
+            priority: newPriority,
+            status: newStatus,
             tags: newTagArray,
             createdAt: task.createdAt,
             id: task.id
         };
-        
+
         // Handle category changes
         if (oldCategory !== newCategory) {
             // Remove old category if no tasks left
@@ -959,16 +1014,16 @@ function editTask(index) {
                 categories = categories.filter(cat => cat !== oldCategory);
                 localStorage.setItem('categories', JSON.stringify(categories));
             }
-            
+
             // Add new category if it doesn't exist
             if (!categories.includes(newCategory)) {
                 categories.push(newCategory);
                 localStorage.setItem('categories', JSON.stringify(categories));
             }
-            
+
             renderCategories(); // Update categories display
         }
-        
+
         // Handle tag changes
         oldTags.forEach(tag => {
             const tasksWithTag = tasks.filter(t => t.tags && t.tags.includes(tag));
@@ -977,18 +1032,18 @@ function editTask(index) {
                 localStorage.setItem('tags', JSON.stringify(tags));
             }
         });
-        
+
         newTagArray.forEach(tag => {
             if (!tags.includes(tag)) {
                 tags.push(tag);
                 localStorage.setItem('tags', JSON.stringify(tags));
             }
         });
-        
+
         renderTasks();
         updateTaskStats();
         renderTags(); // Update tags display
-        
+
         // Show success message
         Swal.fire({
             icon: "success",
@@ -1003,7 +1058,7 @@ function editTask(index) {
 
 function deleteTask(index) {
     const task = tasks[index];
-    
+
     Swal.fire({
         title: "Delete Task?",
         text: `Are you sure you want to delete "${task.title}"?`,
@@ -1016,10 +1071,10 @@ function deleteTask(index) {
         if (result.isConfirmed) {
             const deletedCategory = task.category;
             const deletedTags = task.tags || [];
-            
+
             // Remove task
             tasks.splice(index, 1);
-            
+
             // Check if category should be removed
             const tasksInCategory = tasks.filter(t => task.category === deletedCategory);
             if (tasksInCategory.length === 0) {
@@ -1027,7 +1082,7 @@ function deleteTask(index) {
                 localStorage.setItem('categories', JSON.stringify(categories));
                 renderCategories(); // Update categories display
             }
-            
+
             // Check if tags should be removed
             deletedTags.forEach(tag => {
                 const tasksWithTag = tasks.filter(t => t.tags && t.tags.includes(tag));
@@ -1036,11 +1091,11 @@ function deleteTask(index) {
                     localStorage.setItem('tags', JSON.stringify(tags));
                 }
             });
-            
+
             renderTasks();
             updateTaskStats();
             renderTags(); // Update tags display
-            
+
             // Show success message
             Swal.fire({
                 icon: "success",
@@ -1056,7 +1111,7 @@ function deleteTask(index) {
 
 function markAsCompleted(index) {
     const task = tasks[index];
-    
+
     if (task.status === 'Completed') {
         Swal.fire({
             title: "Already Completed",
@@ -1067,7 +1122,7 @@ function markAsCompleted(index) {
         });
         return;
     }
-    
+
     Swal.fire({
         title: "Mark as Completed?",
         text: `Are you sure you want to mark "${task.title}" as completed?`,
@@ -1080,11 +1135,11 @@ function markAsCompleted(index) {
         if (result.isConfirmed) {
             // Update task status
             tasks[index].status = 'Completed';
-            
+
             // Save and update
             renderTasks();
             updateTaskStats();
-            
+
             // Show success message
             Swal.fire({
                 icon: "success",
@@ -1099,17 +1154,70 @@ function markAsCompleted(index) {
 
 function showDetails(task) {
     let details = `Title: ${task.title}\nCategory: ${task.category}\nPriority: ${task.priority}\nStatus: ${task.status}`;
-    
+
     if (task.tags && task.tags.length > 0) {
         details += `\nTags: ${task.tags.join(', ')}`;
     }
-    
+
     if (task.createdAt) {
         const createdDate = new Date(task.createdAt).toLocaleDateString();
         details += `\nCreated: ${createdDate}`;
     }
-    
+
     alert(details);
 }
 
 renderTasks();
+
+
+
+// profile
+function editProfile() {
+    document.getElementById("viewProfile").classList.add("hidden");
+    document.getElementById("editProfileForm").classList.remove("hidden");
+}
+
+function togglePassword() {
+    const passwordInput = document.getElementById("passwordInput");
+
+    if (passwordInput.type === "password") {
+        passwordInput.type = "text";
+    } else {
+        passwordInput.type = "password";
+    }
+}
+
+function saveProfile() {
+    const name = document.getElementById("nameInput").value;
+    const email = document.getElementById("emailInput").value;
+    const password = document.getElementById("passwordInput").value;
+
+    document.getElementById("displayName").innerText = name;
+    document.getElementById("displayEmail").innerText = email;
+
+    // 🔒 Always hide password after save
+    document.getElementById("displayPassword").innerText = "*".repeat(password.length);
+
+    // Reset password input to hidden
+    document.getElementById("passwordInput").type = "password";
+
+    document.getElementById("editProfileForm").classList.add("hidden");
+    document.getElementById("viewProfile").classList.remove("hidden");
+    document.getElementById("editProfileForm").style.display = 'none';
+    Swal.fire({
+        icon: "success",
+        title: "You have already change!",
+        timer: 3000,
+        showConfirmButton: false
+    });
+
+}
+let show_updet = document.getElementById('editProfileForm');
+let use_updet = document.getElementById('edit');
+use_updet.addEventListener('click', function () {
+    show_updet.style.display = 'block'
+})
+
+
+
+// setting

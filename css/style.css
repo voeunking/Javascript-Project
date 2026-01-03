@@ -1469,3 +1469,138 @@ button:hover {
     display: flex;
     gap: 5px;
 }
+
+
+/* profile */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Profile start */
+/* Profile container */
+.profile {
+  /* width: 350px; */
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  margin: auto;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Profile image */
+.profile img {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #4f46e5;
+  margin-bottom: 10px;
+}
+
+/* Name */
+.profile h3 {
+  font-size: 20px;
+  margin: 10px 0;
+  color: #333;
+}
+
+/* Divider */
+.profile hr {
+  border: none;
+  height: 1px;
+  background: #e5e7eb;
+  margin: 15px 0;
+}
+
+/* Profile info */
+.profile-info {
+  text-align: left;
+}
+
+/* Info text */
+.profile-info h4 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 8px 0;
+  color: #555;
+}
+
+/* Buttons */
+.profile button {
+  width: 20%;
+  padding: 10px;
+  background: #4f46e5;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s;
+}
+
+.profile button:hover {
+  background: #4338ca;
+}
+
+/* Edit form */
+#editProfileForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Labels */
+#editProfileForm label {
+  font-size: 13px;
+  color: #444;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inputs */
+#editProfileForm input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  margin-top: 4px;
+  outline: none;
+}
+
+#editProfileForm input:focus {
+  border-color: #4f46e5;
+}
+
+/* Show password */
+.show-password {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #555;
+}
+
+/* Hidden class */
+.hidden {
+  display: none;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
