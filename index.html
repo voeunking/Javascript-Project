@@ -60,15 +60,16 @@
   <div class="main" style="display: none;" id="main">
     <div class="nav-bar">
       <div class="nav-left">
+        <img src="./img/image copy.png" alt="" style="width: 60px;">
         <!-- <a href="#" class="icon-title"><i class='bx bx-menu'></i></a> -->
         <a href="#" class="title">Task Management</a>
 
       </div>
-      <div class="nav-center">
+      <!-- <div class="nav-center">
         <i class='bx bx-search'></i>
         <input class="bt" type="text" placeholder="sharech">
 
-      </div>
+      </div> -->
       <div class="nav-right">
         <a href="#"><i class='bx bx-help-circle'></i></a>
         <a href="#"><i class='bx bxs-bell'></i></a>
@@ -156,7 +157,7 @@
               <div class="info">
                 <div class="text1">Available Tags</div>
                 <div id="tagsList" class="text2">
-                  <!-- Tags will be rendered here -->
+                  
                 </div>
               </div>
             </div>
@@ -191,14 +192,7 @@
             <button class="add">Add</button>
           </div>
           <ul id="taskList">
-            <!-- <li>
-                            <h4>Finish report</h4>
-                            <div class="button-group">
-                                <button class="edit">Edit</button>
-                                <button class="delete">Delete</button>
-                                <button class="soacetis">Soacetis</button>
-                            </div>
-                        </li> -->
+
           </ul>
 
         </div>
@@ -218,7 +212,6 @@
               </div>
             </div>
           </div>
-
           <!-- Categories List -->
           <div class="card">
             <div class="card-content">
@@ -232,9 +225,8 @@
 
         <!-- Settings Section -->
         <div class="container" id="settings-section" style="display: none;">
+           <h2 class="settings-title">Settings</h2>
           <div class="settings-container">
-            <h2 class="settings-title">Settings</h2>
-
             <!-- Appearance Settings -->
             <div class="settings-card">
               <div class="settings-header">
@@ -266,69 +258,6 @@
                     <option value="medium">Medium</option>
                     <option value="large">Large</option>
                   </select>
-                </div>
-              </div>
-            </div>
-
-            <!-- Notification Settings -->
-            <div class="settings-card">
-              <div class="settings-header">
-                <i class='bx bx-bell'></i>
-                <h3>Notifications</h3>
-              </div>
-              <div class="settings-content">
-                <div class="setting-item">
-                  <label for="task-reminders">Task Reminders</label>
-                  <div class="toggle-switch">
-                    <input type="checkbox" id="task-reminders" class="toggle-input">
-                    <span class="toggle-slider"></span>
-                  </div>
-                </div>
-                <div class="setting-item">
-                  <label for="due-date-alerts">Due Date Alerts</label>
-                  <div class="toggle-switch">
-                    <input type="checkbox" id="due-date-alerts" class="toggle-input">
-                    <span class="toggle-slider"></span>
-                  </div>
-                </div>
-                <div class="setting-item">
-                  <label for="sound-effects">Sound Effects</label>
-                  <div class="toggle-switch">
-                    <input type="checkbox" id="sound-effects" class="toggle-input">
-                    <span class="toggle-slider"></span>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Task Management Settings -->
-            <div class="settings-card">
-              <div class="settings-header">
-                <i class='bx bx-task'></i>
-                <h3>Task Management</h3>
-              </div>
-              <div class="settings-content">
-                <div class="setting-item">
-                  <label for="default-priority">Default Priority</label>
-                  <select id="default-priority" class="setting-select">
-                    <option value="Low">Low</option>
-                    <option value="Medium">Medium</option>
-                    <option value="High">High</option>
-                  </select>
-                </div>
-                <div class="setting-item">
-                  <label for="auto-categorize">Auto-categorize Tasks</label>
-                  <div class="toggle-switch">
-                    <input type="checkbox" id="auto-categorize" class="toggle-input">
-                    <span class="toggle-slider"></span>
-                  </div>
-                </div>
-                <div class="setting-item">
-                  <label for="show-completed">Show Completed Tasks</label>
-                  <div class="toggle-switch">
-                    <input type="checkbox" id="show-completed" class="toggle-input" checked>
-                    <span class="toggle-slider"></span>
-                  </div>
                 </div>
               </div>
             </div>

@@ -662,6 +662,7 @@ active.addEventListener('click', function () {
     show_categories.style.background = 'none';
     categoriesList.style.display = 'none';
     chart.style.display = 'block';
+    active.style.borderRadius = '10px';
     show_profile.style.background = 'none';
     profile.style.display = 'none';
      show_setting.style.display = 'none';
@@ -673,6 +674,7 @@ let tage = document.getElementById('tag');
 tage.addEventListener('click', function () {
 
     show_tage.style.display = 'block';
+  tage.style.borderRadius = '10px';
     main_1_top.style.display = 'none';
     show_task.style.display = 'none';
     tage.style.background = '#b3b1d326';
@@ -693,6 +695,7 @@ tage.addEventListener('click', function () {
 let taskss = document.getElementById('tasks');
 taskss.addEventListener('click', function () {
     show_task.style.display = 'block'
+  taskss.style.borderRadius = '10px';
     main_1_top.style.display = 'none';
     show_tage.style.display = 'none'
     taskss.style.background = '#b3b1d326';
@@ -718,6 +721,7 @@ show_categories.addEventListener('click', function () {
     tage.style.background = 'none';
     taskss.style.background = 'none';
     categoriesList.style.display = 'block';
+    show_categories.style.borderRadius = '10px';
     chart.style.display = 'none';
     show_profile.style.background = 'none';
     profile.style.display = 'none';
@@ -740,6 +744,7 @@ show_profile.addEventListener('click', function () {
     categoriesList.style.display = 'none';
     chart.style.display = 'none';
     profile.style.display = 'block';
+    show_profile.style.borderRadius = '10px';
     show_setting.style.display = 'none';
     setting.style.background = 'none';
 
@@ -750,6 +755,7 @@ let show_setting =document.getElementById('settings-section');
 setting.addEventListener('click',function(){
     show_setting.style.display = 'block';
     setting.style.background = '#b3b1d326';
+    setting.style.borderRadius = '10px';
     show_task.style.display = 'none'
     main_1_top.style.display = 'none';
     show_tage.style.display = 'none'
@@ -866,22 +872,19 @@ addBtn.onclick = () => {
         html: `
             <div style="text-align: left;">
                 <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Task Title:</label>
-                    <input id="swal-title" class="swal2-input" placeholder="Enter task title">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 60; font-size:14px;">Task Title:</label>
+                    <input id="swal-title" class="swal2-input" placeholder="Enter task title" style="font-size:14px; border-radius: 5px;">
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Category:</label>
-                    <select id="swal-category" class="swal2-select">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 60;font-size:14px;">Category:</label>
+                    <select id="swal-category" class="swal2-select" style="font-size:14px; border-radius: 5px;">
                         <option value="">Select category</option>
-                        <option value="Work">Work</option>
-                        <option value="Personal">Personal</option>
-                        <option value="Study">Study</option>
                         ${categories.map(cat => `<option value="${cat}">${cat}</option>`).join('')}
                     </select>
                 </div>
-                <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Priority:</label>
-                    <select id="swal-priority" class="swal2-select">
+                <div style="margin-bottom: 15px;" font-size:14px;>
+                    <label style="display: block; margin-bottom: 5px; font-weight: 60;font-size:14px;" >Priority:</label>
+                    <select id="swal-priority" class="swal2-select" style="font-size:14px; border-radius: 5px;">
                         <option value="">Select priority</option>
                         <option value="Low">Low</option>
                         <option value="Medium">Medium</option>
@@ -889,16 +892,16 @@ addBtn.onclick = () => {
                     </select>
                 </div>
                 <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Status:</label>
-                    <select id="swal-status" class="swal2-select">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 60;font-size:14px;">Status:</label>
+                    <select id="swal-status" class="swal2-select" style="font-size:14px; border-radius: 5px;"> 
                         <option value="">Select status</option>
                         <option value="Pending">Pending</option>
                         <option value="Completed">Completed</option>
                     </select>
                 </div>
-                <div style="margin-bottom: 15px;">
-                    <label style="display: block; margin-bottom: 5px; font-weight: 600;">Tags (comma separated):</label>
-                    <input id="swal-tags" class="swal2-input" placeholder="e.g., urgent, important, review">
+                <div style="margin-bottom: 15px; ">
+                    <label style="display: block; margin-bottom: 5px; font-weight: 60;font-size:14px;">Tags (comma separated):</label>
+                    <input id="swal-tags" class="swal2-input" placeholder="e.g., urgent, important, review" style="font-size:14px; border-radius: 5px;">
                 </div>
             </div>
         `,
@@ -1221,3 +1224,592 @@ use_updet.addEventListener('click', function () {
 
 
 // setting
+
+// Settings State Management
+let settingsState = {
+    appearance: {
+        theme: 'light',
+        colorScheme: 'purple',
+        fontSize: 'medium'
+    },
+    taskManagement: {
+        defaultPriority: 'Medium',
+        autoCategorize: false,
+        showCompleted: true
+    },
+    dataPrivacy: {
+        autoBackup: false,
+        exportFormat: 'json'
+    },
+    notifications: {
+        emailNotifications: true,
+        taskReminders: true,
+        weeklyReport: false
+    }
+};
+
+// Initialize Settings
+function initializeSettings() {
+    loadSettingsFromStorage();
+    setupSettingsEventListeners();
+    applySettingsToUI();
+}
+
+// Load settings from localStorage
+function loadSettingsFromStorage() {
+    const savedSettings = localStorage.getItem('appSettings');
+    if (savedSettings) {
+        settingsState = { ...settingsState, ...JSON.parse(savedSettings) };
+    }
+}
+
+// Save settings to localStorage
+function saveSettingsToStorage() {
+    localStorage.setItem('appSettings', JSON.stringify(settingsState));
+}
+
+// Setup Settings Event Listeners
+function setupSettingsEventListeners() {
+    // Appearance Settings
+    setupAppearanceListeners();
+    
+    // Task Management Settings
+    setupTaskManagementListeners();
+    
+    // Data & Privacy Settings
+    setupDataPrivacyListeners();
+    
+    // Save button
+    const saveBtn = document.querySelector('[onclick="saveSettings()"]');
+    if (saveBtn) {
+        saveBtn.onclick = saveSettings;
+    }
+}
+
+// Setup Appearance Listeners
+function setupAppearanceListeners() {
+    // Theme selector
+    const themeSelect = document.getElementById('theme-select');
+    if (themeSelect) {
+        themeSelect.value = settingsState.appearance.theme;
+        themeSelect.addEventListener('change', (e) => {
+            settingsState.appearance.theme = e.target.value;
+            applyTheme(e.target.value);
+        });
+    }
+
+    // Color scheme selector
+    const colorSchemeSelect = document.getElementById('color-scheme');
+    if (colorSchemeSelect) {
+        colorSchemeSelect.value = settingsState.appearance.colorScheme;
+        colorSchemeSelect.addEventListener('change', (e) => {
+            settingsState.appearance.colorScheme = e.target.value;
+            applyColorScheme(e.target.value);
+        });
+    }
+
+    // Font size selector (if exists)
+    const fontSizeSelect = document.getElementById('font-size');
+    if (fontSizeSelect) {
+        fontSizeSelect.value = settingsState.appearance.fontSize;
+        fontSizeSelect.addEventListener('change', (e) => {
+            settingsState.appearance.fontSize = e.target.value;
+            applyFontSize(e.target.value);
+        });
+    }
+}
+
+// Setup Task Management Listeners
+function setupTaskManagementListeners() {
+    // Default priority selector
+    const defaultPrioritySelect = document.getElementById('default-priority');
+    if (defaultPrioritySelect) {
+        defaultPrioritySelect.value = settingsState.taskManagement.defaultPriority;
+        defaultPrioritySelect.addEventListener('change', (e) => {
+            settingsState.taskManagement.defaultPriority = e.target.value;
+        });
+    }
+
+    // Auto-categorize toggle
+    const autoCategorizeToggle = document.getElementById('auto-categorize');
+    if (autoCategorizeToggle) {
+        autoCategorizeToggle.checked = settingsState.taskManagement.autoCategorize;
+        autoCategorizeToggle.addEventListener('change', (e) => {
+            settingsState.taskManagement.autoCategorize = e.target.checked;
+        });
+    }
+
+    // Show completed tasks toggle
+    const showCompletedToggle = document.getElementById('show-completed');
+    if (showCompletedToggle) {
+        showCompletedToggle.checked = settingsState.taskManagement.showCompleted;
+        showCompletedToggle.addEventListener('change', (e) => {
+            settingsState.taskManagement.showCompleted = e.target.checked;
+            filterTasks(); // Re-filter tasks when this changes
+        });
+    }
+}
+
+// Setup Data & Privacy Listeners
+function setupDataPrivacyListeners() {
+    // Auto backup toggle
+    const autoBackupToggle = document.getElementById('auto-backup');
+    if (autoBackupToggle) {
+        autoBackupToggle.checked = settingsState.dataPrivacy.autoBackup;
+        autoBackupToggle.addEventListener('change', (e) => {
+            settingsState.dataPrivacy.autoBackup = e.target.checked;
+            if (e.target.checked) {
+                enableAutoBackup();
+            } else {
+                disableAutoBackup();
+            }
+        });
+    }
+
+    // Export data button
+    const exportBtn = document.querySelector('[onclick="exportData()"]');
+    if (exportBtn) {
+        exportBtn.onclick = exportData;
+    }
+
+    // Clear all data button
+    const clearBtn = document.querySelector('[onclick="clearAllData()"]');
+    if (clearBtn) {
+        clearBtn.onclick = clearAllData;
+    }
+}
+
+// Apply Theme
+function applyTheme(theme) {
+    const body = document.body;
+    body.classList.remove('theme-light', 'theme-dark', 'theme-auto');
+    
+    if (theme === 'dark') {
+        body.classList.add('theme-dark');
+    } else if (theme === 'light') {
+        body.classList.add('theme-light');
+    } else {
+        // Auto theme based on system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        body.classList.add(prefersDark ? 'theme-dark' : 'theme-light');
+    }
+}
+
+// Apply Color Scheme
+function applyColorScheme(colorScheme) {
+    const body = document.body;
+    body.classList.remove('color-purple', 'color-blue', 'color-green', 'color-red');
+    body.classList.add(`color-${colorScheme}`);
+}
+
+// Apply Font Size
+function applyFontSize(fontSize) {
+    const body = document.body;
+    body.classList.remove('font-small', 'font-medium', 'font-large');
+    body.classList.add(`font-${fontSize}`);
+}
+
+// Apply Settings to UI
+function applySettingsToUI() {
+    applyTheme(settingsState.appearance.theme);
+    applyColorScheme(settingsState.appearance.colorScheme);
+    applyFontSize(settingsState.appearance.fontSize);
+}
+
+// Save Settings
+function saveSettings() {
+    saveSettingsToStorage();
+    
+    // Show success message
+    Swal.fire({
+        icon: 'success',
+        title: 'Settings Saved',
+        text: 'Your settings have been saved successfully',
+        timer: 2000,
+        showConfirmButton: false
+    });
+}
+
+// Export Data
+function exportData() {
+    try {
+        // Collect all data
+        const exportData = {
+            settings: settingsState,
+            tasks: tasks || [],
+            categories: categories || [],
+            tags: tags || [],
+            userData: getUserData(),
+            exportDate: new Date().toISOString()
+        };
+
+        // Create blob and download
+        const dataStr = JSON.stringify(exportData, null, 2);
+        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+        const url = URL.createObjectURL(dataBlob);
+        
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `task-manager-backup-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+
+        Swal.fire({
+            icon: 'success',
+            title: 'Data Exported',
+            text: 'Your data has been exported successfully',
+            timer: 2000,
+            showConfirmButton: false
+        });
+    } catch (error) {
+        console.error('Export error:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Export Failed',
+            text: 'Failed to export data. Please try again.',
+        });
+    }
+}
+
+// Clear All Data
+function clearAllData() {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "This action cannot be undone. All your data will be permanently deleted.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#ff4444',
+        cancelButtonColor: '#6c757d',
+        confirmButtonText: 'Yes, delete all data',
+        cancelButtonText: 'Cancel'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Clear all localStorage data
+            localStorage.clear();
+            
+            // Reset settings to defaults
+            settingsState = {
+                appearance: {
+                    theme: 'light',
+                    colorScheme: 'purple',
+                    fontSize: 'medium'
+                },
+                taskManagement: {
+                    defaultPriority: 'Medium',
+                    autoCategorize: false,
+                    showCompleted: true
+                },
+                dataPrivacy: {
+                    autoBackup: false,
+                    exportFormat: 'json'
+                },
+                notifications: {
+                    emailNotifications: true,
+                    taskReminders: true,
+                    weeklyReport: false
+                }
+            };
+
+            // Clear tasks array
+            if (typeof tasks !== 'undefined') {
+                tasks = [];
+                renderTasks();
+            }
+
+            // Reload page to reset everything
+            setTimeout(() => {
+                window.location.reload();
+            }, 1000);
+
+            Swal.fire({
+                icon: 'success',
+                title: 'Data Cleared',
+                text: 'All data has been deleted successfully',
+                timer: 2000,
+                showConfirmButton: false
+            });
+        }
+    });
+}
+
+// Enable Auto Backup
+function enableAutoBackup() {
+    // Set up periodic backup every 5 minutes
+    if (window.backupInterval) {
+        clearInterval(window.backupInterval);
+    }
+    
+    window.backupInterval = setInterval(() => {
+        const backupData = {
+            settings: settingsState,
+            tasks: tasks || [],
+            categories: categories || [],
+            tags: tags || [],
+            backupDate: new Date().toISOString()
+        };
+        
+        localStorage.setItem('autoBackup', JSON.stringify(backupData));
+        console.log('Auto backup completed');
+    }, 5 * 60 * 1000); // 5 minutes
+}
+
+// Disable Auto Backup
+function disableAutoBackup() {
+    if (window.backupInterval) {
+        clearInterval(window.backupInterval);
+        window.backupInterval = null;
+    }
+}
+
+// Restore from Auto Backup
+function restoreFromAutoBackup() {
+    const backupData = localStorage.getItem('autoBackup');
+    if (backupData) {
+        try {
+            const data = JSON.parse(backupData);
+            
+            // Restore settings
+            if (data.settings) {
+                settingsState = { ...settingsState, ...data.settings };
+                applySettingsToUI();
+            }
+            
+            // Restore tasks
+            if (data.tasks && typeof tasks !== 'undefined') {
+                tasks = data.tasks;
+                renderTasks();
+            }
+            
+            console.log('Auto backup restored');
+        } catch (error) {
+            console.error('Failed to restore from backup:', error);
+        }
+    }
+}
+
+// Settings Navigation
+function showSettings() {
+    // Hide all other sections
+    const sections = ['main-1-top', 'task', 'categories-list', 'tage'];
+    sections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) section.style.display = 'none';
+    });
+    
+    // Show settings section
+    const settingsSection = document.getElementById('settings-section');
+    if (settingsSection) {
+        settingsSection.style.display = 'block';
+    }
+    
+    // Update active state in sidebar
+    const sidebarItems = document.querySelectorAll('.side a');
+    sidebarItems.forEach(item => {
+        item.style.background = 'none';
+    });
+    
+    const settingsLink = document.querySelector('[onclick="showSettings()"]');
+    if (settingsLink) {
+        settingsLink.style.background = '#b3b1d326';
+    }
+}
+
+// Add CSS for theme support
+const settingsCSS = `
+    /* Theme Support */
+    .theme-dark {
+        background-color: #1a1a1a;
+        color: #ffffff;
+    }
+    
+    .theme-dark .card,
+    .theme-dark .settings-card {
+        background-color: #2d2d2d;
+        border-color: #404040;
+    }
+    
+    .theme-dark .input-field,
+    .theme-dark .setting-select {
+        background-color: #404040;
+        color: #ffffff;
+        border-color: #555555;
+    }
+    
+    /* Color Schemes */
+    .color-purple {
+        --primary-color: #8b5cf6;
+        --secondary-color: #a78bfa;
+    }
+    
+    .color-blue {
+        --primary-color: #3b82f6;
+        --secondary-color: #60a5fa;
+    }
+    
+    .color-green {
+        --primary-color: #10b981;
+        --secondary-color: #34d399;
+    }
+    
+    .color-red {
+        --primary-color: #ef4444;
+        --secondary-color: #f87171;
+    }
+    
+    /* Font Sizes */
+    .font-small {
+        font-size: 14px;
+    }
+    
+    .font-medium {
+        font-size: 16px;
+    }
+    
+    .font-large {
+        font-size: 18px;
+    }
+    
+    /* Settings specific styles */
+    .settings-card {
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    .settings-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .settings-header i {
+        font-size: 20px;
+        margin-right: 10px;
+        color: var(--primary-color);
+    }
+    
+    .settings-header h3 {
+        margin: 0;
+        font-size: 18px;
+    }
+    
+    .setting-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+    }
+    
+    .setting-item label {
+        font-weight: 500;
+        color: #333;
+    }
+    
+    .setting-select {
+        padding: 8px 12px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        background: white;
+        min-width: 150px;
+    }
+    
+    .toggle-switch {
+        position: relative;
+        width: 50px;
+        height: 24px;
+    }
+    
+    .toggle-input {
+        opacity: 0;
+        width: 0;
+        height: 0;
+    }
+    
+    .toggle-slider {
+        position: absolute;
+        cursor: pointer;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #ccc;
+        transition: .4s;
+        border-radius: 24px;
+    }
+    
+    .toggle-slider:before {
+        position: absolute;
+        content: "";
+        height: 18px;
+        width: 18px;
+        left: 3px;
+        bottom: 3px;
+        background-color: white;
+        transition: .4s;
+        border-radius: 50%;
+    }
+    
+    .toggle-input:checked + .toggle-slider {
+        background-color: var(--primary-color);
+    }
+    
+    .toggle-input:checked + .toggle-slider:before {
+        transform: translateX(26px);
+    }
+    
+    .btn {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+    
+    .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+    }
+    
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+    
+    .btn-danger {
+        background-color: #dc3545;
+        color: white;
+    }
+    
+    .btn:hover {
+        opacity: 0.9;
+    }
+`;
+
+// Add settings CSS to document
+const settingsStyleElement = document.createElement('style');
+settingsStyleElement.textContent = settingsCSS;
+document.head.appendChild(settingsStyleElement);
+
+// Initialize settings when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    initializeSettings();
+    restoreFromAutoBackup();
+});
+
+// Export settings functions for global access
+window.settingsFeature = {
+    showSettings: showSettings,
+    saveSettings: saveSettings,
+    exportData: exportData,
+    clearAllData: clearAllData,
+    applyTheme: applyTheme,
+    applyColorScheme: applyColorScheme
+};
